@@ -2,7 +2,20 @@
 document.addEventListener('DOMContentLoaded', function() {
     const parallaxElements = document.querySelectorAll('.hero-image, .about-image, .experience-image, .waitlist-image');
     
+    // Check if device is tablet or mobile
+    function isTabletOrMobile() {
+        return window.innerWidth <= 1024;
+    }
+    
     window.addEventListener('scroll', function() {
+        // Disable parallax on tablets and mobile
+        if (isTabletOrMobile()) {
+            parallaxElements.forEach((element) => {
+                element.style.transform = 'none';
+            });
+            return;
+        }
+        
         const scrolled = window.pageYOffset;
         
         parallaxElements.forEach((element, index) => {
@@ -15,6 +28,15 @@ document.addEventListener('DOMContentLoaded', function() {
             
             element.style.transform = `translateY(${limitedYPos}px)`;
         });
+    });
+    
+    // Handle resize events
+    window.addEventListener('resize', function() {
+        if (isTabletOrMobile()) {
+            parallaxElements.forEach((element) => {
+                element.style.transform = 'none';
+            });
+        }
     });
 
 
@@ -241,5 +263,40 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
             document.body.style.opacity = '1';
         }, 100);
+    });
+
+    // Scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    
+    // Show/hide scroll to top button
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            scrollToTopBtn.classList.add('visible');
+        } else {
+            scrollToTopBtn.classList.remove('visible');
+        }
+    });
+    
+    // Scroll to top when button is clicked
+    scrollToTopBtn.addEventListener('click', function() {
+        // Add visual feedback
+        scrollToTopBtn.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            scrollToTopBtn.style.transform = 'scale(1)';
+        }, 150);
+        
+        // Enhanced smooth scroll with visible scroll effect
+        const scrollToTop = () => {
+            const currentPosition = window.pageYOffset;
+            if (currentPosition > 0) {
+                window.requestAnimationFrame(scrollToTop);
+                // Much slower, smoother scroll effect
+                const scrollStep = Math.max(currentPosition / 25, 1);
+                window.scrollTo(0, currentPosition - scrollStep);
+            }
+        };
+        
+        // Always use custom animation for more visible effect
+        scrollToTop();
     });
 });
