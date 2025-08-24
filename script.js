@@ -285,18 +285,10 @@ document.addEventListener('DOMContentLoaded', function() {
             scrollToTopBtn.style.transform = 'scale(1)';
         }, 150);
         
-        // Enhanced smooth scroll with visible scroll effect
-        const scrollToTop = () => {
-            const currentPosition = window.pageYOffset;
-            if (currentPosition > 0) {
-                window.requestAnimationFrame(scrollToTop);
-                // Much slower, smoother scroll effect
-                const scrollStep = Math.max(currentPosition / 25, 1);
-                window.scrollTo(0, currentPosition - scrollStep);
-            }
-        };
-        
-        // Always use custom animation for more visible effect
-        scrollToTop();
+        // Fast and smooth scroll to top using modern approach
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
 });
