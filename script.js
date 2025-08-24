@@ -50,6 +50,9 @@ document.addEventListener('DOMContentLoaded', function() {
         return re.test(email);
     }
 
+    // Google Apps Script Web App URL for Sheets integration
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwpMjwxAOBju-Mcc-D0b1RUh2GSftZ5qErfHKl9pt4U2evNUVyVPTF34AGv7sc2-2e-Ww/exec';
+
     emailInputs.forEach((input, index) => {
         input.addEventListener('input', function() {
             const email = this.value;
@@ -68,13 +71,35 @@ document.addEventListener('DOMContentLoaded', function() {
     joinButtons.forEach((button, index) => {
         button.addEventListener('click', function() {
             const email = emailInputs[index].value;
-            
+            const source = index === 0 ? 'hero' : 'waitlist';
+
             if (validateEmail(email)) {
-                // Show success message
-                showNotification('Thank you! You\'ve been added to our waitlist.', 'success');
-                emailInputs[index].value = '';
-                button.style.background = '#333333';
-                button.style.color = '#888888';
+                const originalText = button.textContent;
+                button.disabled = true;
+                button.textContent = 'Joining...';
+
+                const params = new URLSearchParams({ email, source }).toString();
+                fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+                    body: params,
+                    mode: 'no-cors',
+                    cache: 'no-store'
+                })
+                .then(() => {
+                    showNotification('🎉 Successfully joined the waitlist!', 'success');
+                    emailInputs[index].value = '';
+                    button.style.background = '#333333';
+                    button.style.color = '#888888';
+                })
+                .catch((err) => {
+                    console.error('Email submit error:', err);
+                    showNotification('Network error. Please check your connection.', 'error');
+                })
+                .finally(() => {
+                    button.disabled = false;
+                    button.textContent = originalText;
+                });
             } else {
                 showNotification('Please enter a valid email address.', 'error');
             }
