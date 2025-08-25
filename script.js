@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Google Apps Script Web App URL for Sheets integration
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwpMjwxAOBju-Mcc-D0b1RUh2GSftZ5qErfHKl9pt4U2evNUVyVPTF34AGv7sc2-2e-Ww/exec';
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzxs-08TbTLsvNo91lkhOiWU-_Bc0Z3nAPiLRF7R6a6J1ouUq1II2Hn-G0rgUomjMZL/exec';
 
     emailInputs.forEach((input, index) => {
         input.addEventListener('input', function() {
@@ -68,8 +68,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Function to get IP address
+    async function getIPAddress() {
+        try {
+            const response = await fetch('https://api.ipify.org?format=json');
+            const data = await response.json();
+            return data.ip;
+        } catch (error) {
+            console.error('Error fetching IP:', error);
+            return 'Unknown';
+        }
+    }
+
     joinButtons.forEach((button, index) => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', async function() {
             const email = emailInputs[index].value;
             const source = index === 0 ? 'hero' : 'waitlist';
 
@@ -78,28 +90,65 @@ document.addEventListener('DOMContentLoaded', function() {
                 button.disabled = true;
                 button.textContent = 'Joining...';
 
-                const params = new URLSearchParams({ email, source }).toString();
-                fetch(GOOGLE_SCRIPT_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
-                    body: params,
-                    mode: 'no-cors',
-                    cache: 'no-store'
-                })
-                .then(() => {
-                    showNotification('🎉 Successfully joined the waitlist!', 'success');
-                    emailInputs[index].value = '';
-                    button.style.background = '#333333';
-                    button.style.color = '#888888';
-                })
-                .catch((err) => {
-                    console.error('Email submit error:', err);
-                    showNotification('Network error. Please check your connection.', 'error');
-                })
-                .finally(() => {
+                try {
+                    // Get IP address
+                    const ipAddress = await getIPAddress();
+                    
+                    // Prepare form data with IP address
+                    const formData = new FormData();
+                    formData.append('email', email);
+                    formData.append('source', source);
+                    formData.append('ip', ipAddress);
+                    formData.append('timestamp', new Date().toISOString());
+                    formData.append('userAgent', navigator.userAgent);
+
+                                         // Send data to Google Apps Script
+                     const params = new URLSearchParams();
+                     params.append('email', email);
+                     params.append('source', source);
+                     params.append('ip', ipAddress);
+                     
+                     // Format timestamp as M/D/YYYY H:MM:SS
+                     const now = new Date();
+                     const clientTimestamp = (now.getMonth() + 1) + '/' + now.getDate() + '/' + now.getFullYear() + ' ' + 
+                                           now.getHours() + ':' + String(now.getMinutes()).padStart(2, '0') + ':' + String(now.getSeconds()).padStart(2, '0');
+                     params.append('timestamp', clientTimestamp);
+                     params.append('userAgent', navigator.userAgent);
+
+                    fetch(GOOGLE_SCRIPT_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+                        body: params.toString(),
+                        cache: 'no-store'
+                    })
+                    .then(() => {
+                        showNotification('🎉 Successfully joined the waitlist!', 'success');
+                        emailInputs[index].value = '';
+                        button.style.background = '#333333';
+                        button.style.color = '#888888';
+                        
+                        // Log the submission for debugging
+                        console.log('Waitlist submission:', {
+                            email: email,
+                            source: source,
+                            ip: ipAddress,
+                            timestamp: new Date().toISOString()
+                        });
+                    })
+                    .catch((err) => {
+                        console.error('Email submit error:', err);
+                        showNotification('Network error. Please check your connection.', 'error');
+                    })
+                    .finally(() => {
+                        button.disabled = false;
+                        button.textContent = originalText;
+                    });
+                } catch (error) {
+                    console.error('Error processing submission:', error);
+                    showNotification('An error occurred. Please try again.', 'error');
                     button.disabled = false;
                     button.textContent = originalText;
-                });
+                }
             } else {
                 showNotification('Please enter a valid email address.', 'error');
             }
