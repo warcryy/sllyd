@@ -319,6 +319,7 @@ document.addEventListener('DOMContentLoaded', function() {
         background: linear-gradient(90deg, #ffffff, #888888);
         z-index: 10001;
         transition: width 0.1s ease;
+        pointer-events: none;
     `;
     document.body.appendChild(progressBar);
 
@@ -329,14 +330,14 @@ document.addEventListener('DOMContentLoaded', function() {
         progressBar.style.width = scrollPercent + '%';
     });
 
-    // Add loading animation
+    // Ensure proper scroll behavior
     window.addEventListener('load', function() {
-        document.body.style.opacity = '0';
-        document.body.style.transition = 'opacity 0.5s ease';
+        // Remove any potential scroll locks
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
         
-        setTimeout(() => {
-            document.body.style.opacity = '1';
-        }, 100);
+        // Ensure smooth scrolling is enabled
+        document.documentElement.style.scrollBehavior = 'smooth';
     });
 
     // Scroll to top functionality
