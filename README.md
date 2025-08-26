@@ -1,5 +1,6 @@
 # sllyd - Venue-Based Dating App Landing Page
 
+
 A stunning, Apple-inspired landing page for sllyd, a venue-based dating application. This landing page features modern design, parallax effects, and a dark theme with smooth animations.
 
 ## Features
