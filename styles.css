@@ -38,16 +38,67 @@ html {
     position: absolute;
     top: 2rem;
     left: 2rem;
-    font-size: 2rem;
-    font-weight: 700;
-    color: #ffffff;
-    letter-spacing: -0.02em;
     z-index: 1000;
     transition: all 0.3s ease;
 }
 
 .logo:hover {
     transform: scale(1.05);
+}
+
+.logo-image {
+    height: 100px;
+    width: auto;
+    max-width: 350px;
+    /* High-quality image rendering */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: bicubic;
+    /* Anti-aliasing for smooth edges */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Ensure sharp rendering */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    /* Additional quality enhancements */
+    filter: contrast(1.1) brightness(1.02);
+    object-fit: contain;
+}
+
+/* Responsive logo sizing */
+@media (max-width: 768px) {
+    .logo {
+        top: 1.5rem;
+        left: 1.5rem;
+    }
+    
+    .logo-image {
+        height: 80px;
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        top: 1rem;
+        left: 1rem;
+    }
+    
+    .logo-image {
+        height: 70px;
+        max-width: 200px;
+    }
+}
+
+/* High-DPI display optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .logo-image {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
 }
 
 /* Hero Section */
