@@ -3,97 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>sllyd</title>
+    <title>sllyd — a community built around the places you love</title>
+    <meta name="description" content="sllyd is a community app for the places you actually go. Join the waitlist.">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Logo -->
-    <div class="logo">
-        <img src="public/logo.png" alt="sllyd" class="logo-image">
+    <!-- Translucent animated backdrop -->
+    <div class="bg-fx" aria-hidden="true">
+        <span class="orb orb-1"></span>
+        <span class="orb orb-2"></span>
+        <span class="orb orb-3"></span>
+        <span class="orb orb-4"></span>
     </div>
 
-    <!-- Hero Section -->
+    <!-- Top bar -->
+    <header class="top-bar">
+        <a href="#home" class="logo" aria-label="sllyd home">
+            <img src="public/logo.png" alt="sllyd" class="logo-image">
+        </a>
+        <a href="#waitlist" class="top-link">Join waitlist</a>
+    </header>
+
+    <!-- Hero -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-title-container">
-                <h1 class="hero-title">Find Love Where You Are</h1>
-            </div>
-            <p class="hero-subtitle">Discover meaningful connections at your favorite venues</p>
-            <div class="hero-cta">
-                <input type="email" placeholder="Enter your email" class="email-input">
-                <button class="join-btn">Join Waitlist</button>
-            </div>
-        </div>
-        <div class="hero-image">
-            <img src="public/find-love-where-u-are.jpg" alt="Find love where you are">
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="about-content">
-            <h2 class="section-title">Why sllyd?</h2>
-            <p class="section-text">Connect with people who share your taste in venues. From cozy cafes to trendy bars, find your perfect match where you love to be.</p>
-        </div>
-        <div class="about-image">
-            <img src="public/why-sllyd.jpg" alt="Why sllyd">
+        <div class="hero-inner">
+            <h1 class="hero-title">
+                <span class="reveal-line"><span class="reveal-word">A</span> <span class="reveal-word">community</span></span>
+                <span class="reveal-line"><span class="reveal-word">for</span> <span class="reveal-word">the</span> <span class="reveal-word">places</span></span>
+                <span class="reveal-line"><span class="reveal-word">you</span> <span class="reveal-word">actually</span> <span class="reveal-word">go.</span></span>
+            </h1>
+            <p class="hero-subtitle">sllyd is a community app built around your favourite venues — the cafés, bars, and rooms where you keep showing up.</p>
+            <form class="cta-form" data-source="hero" novalidate>
+                <input type="email" placeholder="your@email.com" class="email-input" required>
+                <button type="submit" class="join-btn">Join the waitlist</button>
+            </form>
+            <p class="hero-fineprint">No spam. One email when we open the doors.</p>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features" class="features">
-        <div class="feature-item">
-            <div class="feature-content">
-                <h2 class="section-title">Venue-Based Matching</h2>
-                <p class="section-text">Connect with people who frequent your favorite places. From cozy cafes to trendy bars, find your perfect match where you love to be.</p>
-            </div>
+    <!-- Marquee -->
+    <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+            <span>Built for community</span><span aria-hidden="true">•</span>
+            <span>By community</span><span aria-hidden="true">•</span>
+            <span>For the places you love</span><span aria-hidden="true">•</span>
+            <span>Coming soon</span><span aria-hidden="true">•</span>
+            <span>Built for community</span><span aria-hidden="true">•</span>
+            <span>By community</span><span aria-hidden="true">•</span>
+            <span>For the places you love</span><span aria-hidden="true">•</span>
+            <span>Coming soon</span><span aria-hidden="true">•</span>
         </div>
-        
-        <div class="feature-item reverse">
-            <div class="feature-content">
-                <h2 class="section-title">Smart Compatibility</h2>
-                <p class="section-text">AI-powered matching based on venue preferences. Our intelligent algorithm learns your taste and connects you with compatible people.</p>
-            </div>
-        </div>
-        
-        <div class="feature-item">
-            <div class="feature-content">
-                <h2 class="section-title">Safe & Secure</h2>
-                <p class="section-text">Verified profiles and secure messaging ensure your safety. Connect with confidence knowing every profile is authentic.</p>
-            </div>
+    </div>
+
+    <!-- About / Why -->
+    <section class="about reveal">
+        <div class="about-grid">
+            <div class="about-eyebrow">About</div>
+            <h2 class="section-title">
+                Your favourite venues, turned into rooms full of the people who keep showing up.
+            </h2>
+            <p class="section-text">
+                sllyd is not a feed and not a swipe. It is a community app that maps the places you already love to the people who love them too. Less scrolling. More showing up.
+            </p>
         </div>
     </section>
 
-    <!-- Experience Section -->
-    <section class="experience">
-        <div class="experience-content">
-            <h2 class="section-title">Experience Dating Differently</h2>
-            <p class="section-text">No more endless swiping. Meet people who share your lifestyle and favorite spots.</p>
+    <!-- How it works (3 step modular) -->
+    <section class="steps">
+        <div class="steps-header reveal">
+            <div class="about-eyebrow">How it works</div>
+            <h2 class="section-title small">Three quiet steps.</h2>
         </div>
-        <div class="experience-image">
-            <img src="public/experience-dating-differently.jpg" alt="Experience dating differently">
+        <div class="steps-grid">
+            <article class="step reveal">
+                <div class="step-number">01</div>
+                <h3 class="step-title">Discover</h3>
+                <p class="step-text">Find the rooms tied to the venues you already go to.</p>
+            </article>
+            <article class="step reveal">
+                <div class="step-number">02</div>
+                <h3 class="step-title">Connect</h3>
+                <p class="step-text">Meet the regulars. Share what's on tonight. Build context, not contact lists.</p>
+            </article>
+            <article class="step reveal">
+                <div class="step-number">03</div>
+                <h3 class="step-title">Belong</h3>
+                <p class="step-text">Turn a place you visit into a community you're part of.</p>
+            </article>
         </div>
     </section>
 
-    <!-- Waitlist Section -->
-    <section id="waitlist" class="waitlist">
-        <div class="waitlist-content">
-            <h2 class="section-title">Be Among the First</h2>
-            <p class="section-text">Join our exclusive waitlist and get early access to sllyd when we launch.</p>
-            <div class="waitlist-cta">
-                <input type="email" placeholder="Enter your email" class="email-input">
-                <button class="join-btn">Join Waitlist</button>
-            </div>
-        </div>
-        <div class="waitlist-image">
-            <img src="public/be-among-the-first.jpg" alt="Be among the first">
+    <!-- Single community image -->
+    <section class="feature-image reveal">
+        <figure class="feature-image-frame">
+            <img src="public/community-image-1.jpeg" alt="Friends together at a venue" loading="lazy">
+            <figcaption class="feature-image-caption">Real venues. Real people. No filters.</figcaption>
+        </figure>
+    </section>
+
+    <!-- Waitlist -->
+    <section id="waitlist" class="waitlist reveal">
+        <div class="waitlist-inner">
+            <h2 class="waitlist-title">Be early.</h2>
+            <p class="section-text center">We're opening the first rooms soon. Drop your email to be among the first in.</p>
+            <form class="cta-form center" data-source="waitlist" novalidate>
+                <input type="email" placeholder="your@email.com" class="email-input" required>
+                <button type="submit" class="join-btn">Join the waitlist</button>
+            </form>
         </div>
     </section>
 
-    <!-- Scroll to Top Button -->
-    <button id="scrollToTop" class="scroll-to-top">↑</button>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <a href="#home" class="logo footer-mark" aria-label="sllyd home">
+                <img src="public/logo.png" alt="sllyd" class="logo-image">
+            </a>
+            <div class="footer-meta">© <span id="year"></span> sllyd. Coming soon.</div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
