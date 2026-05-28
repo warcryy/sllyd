@@ -3,127 +3,212 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>sllyd — a community built around the places you love</title>
-    <meta name="description" content="sllyd is a community app for the places you actually go. Join the waitlist.">
+    <title>sllyd — meet the people at the places you go</title>
+    <meta name="description" content="sllyd is a community app that helps you meet and network with the people at the venues you already go to. Join the waitlist.">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Translucent animated backdrop -->
-    <div class="bg-fx" aria-hidden="true">
-        <span class="orb orb-1"></span>
-        <span class="orb orb-2"></span>
-        <span class="orb orb-3"></span>
-        <span class="orb orb-4"></span>
-    </div>
-
-    <!-- Top bar -->
-    <header class="top-bar">
-        <a href="#home" class="logo" aria-label="sllyd home">
-            <img src="public/logo.png" alt="sllyd" class="logo-image">
-        </a>
-        <a href="#waitlist" class="top-link">Join waitlist</a>
+    <!-- ===================== Navigation ===================== -->
+    <header class="nav">
+        <span class="nav-logo-anchor" aria-hidden="true"><img src="public/logo-full.png" alt=""></span>
+        <div class="nav-right">
+            <nav class="nav-links" aria-label="Primary">
+                <a href="#how" class="nav-link">How it works</a>
+                <a href="#why" class="nav-link">Why sllyd</a>
+                <a href="#community" class="nav-link">Community</a>
+            </nav>
+            <a href="#waitlist" class="btn btn-primary nav-cta">Join waitlist</a>
+        </div>
     </header>
 
-    <!-- Hero -->
-    <section id="home" class="hero">
+    <!-- ===================== Morphing brand logo (per-letter, fixed) ===================== -->
+    <a href="#home" class="brand-logo" data-brand-logo data-aspect="1.6222" aria-label="sllyd home">
+        <img class="brand-letter" src="public/logo-letter-1.png" alt="" data-rcx="0.1526" data-rcy="0.4495" data-wf="0.3051" data-hf="0.7374">
+        <img class="brand-letter" src="public/logo-letter-2.png" alt="" data-rcx="0.3487" data-rcy="0.4354" data-wf="0.1669" data-hf="0.8384">
+        <img class="brand-letter" src="public/logo-letter-3.png" alt="" data-rcx="0.4795" data-rcy="0.4556" data-wf="0.1469" data-hf="0.6404">
+        <img class="brand-letter" src="public/logo-letter-4.png" alt="" data-rcx="0.6445" data-rcy="0.6081" data-wf="0.2902" data-hf="0.7838">
+        <img class="brand-letter" src="public/logo-letter-5.png" alt="sllyd" data-rcx="0.8474" data-rcy="0.4283" data-wf="0.3051" data-hf="0.8566">
+    </a>
+
+    <!-- ===================== Logo intro stage (red over visible image) ===================== -->
+    <section id="home" class="logo-stage theme-red">
+        <div class="stage-cue" data-stage-cue>
+            <p class="stage-tag">meet the people at the places you go</p>
+        </div>
+    </section>
+
+    <!-- ===================== Hero ===================== -->
+    <section class="hero">
         <div class="hero-inner">
+            <p class="eyebrow reveal">A community app for real venues</p>
             <h1 class="hero-title">
-                <span class="reveal-line"><span class="reveal-word">A</span> <span class="reveal-word">community</span></span>
-                <span class="reveal-line"><span class="reveal-word">for</span> <span class="reveal-word">the</span> <span class="reveal-word">places</span></span>
-                <span class="reveal-line"><span class="reveal-word">you</span> <span class="reveal-word">actually</span> <span class="reveal-word">go.</span></span>
+                <span class="reveal-line"><span class="reveal-word">Less scrolling.</span></span>
+                <span class="reveal-line"><span class="reveal-word accent">More showing up.</span></span>
             </h1>
-            <p class="hero-subtitle">sllyd is a community app built around your favourite venues — the cafés, bars, and rooms where you keep showing up.</p>
-            <form class="cta-form" data-source="hero" novalidate>
-                <input type="email" placeholder="your@email.com" class="email-input" required>
-                <button type="submit" class="join-btn">Join the waitlist</button>
-            </form>
-            <p class="hero-fineprint">No spam. One email when we open the doors.</p>
+            <p class="hero-sub reveal">sllyd helps you meet and network with the people at the venues you already go to — cafés, bars, coworking, events. Connection that starts in person.</p>
+            <div class="hero-cta reveal">
+                <a href="#waitlist" class="btn btn-primary btn-lg">Join the waitlist</a>
+                <a href="#how" class="btn btn-ghost btn-lg">How it works</a>
+            </div>
         </div>
-    </section>
-
-    <!-- Marquee -->
-    <div class="marquee" aria-hidden="true">
-        <div class="marquee-track">
-            <span>Built for community</span><span aria-hidden="true">•</span>
-            <span>By community</span><span aria-hidden="true">•</span>
-            <span>For the places you love</span><span aria-hidden="true">•</span>
-            <span>Coming soon</span><span aria-hidden="true">•</span>
-            <span>Built for community</span><span aria-hidden="true">•</span>
-            <span>By community</span><span aria-hidden="true">•</span>
-            <span>For the places you love</span><span aria-hidden="true">•</span>
-            <span>Coming soon</span><span aria-hidden="true">•</span>
-        </div>
-    </div>
-
-    <!-- About / Why -->
-    <section class="about reveal">
-        <div class="about-grid">
-            <div class="about-eyebrow">About</div>
-            <h2 class="section-title">
-                Your favourite venues, turned into rooms full of the people who keep showing up.
-            </h2>
-            <p class="section-text">
-                sllyd is not a feed and not a swipe. It is a community app that maps the places you already love to the people who love them too. Less scrolling. More showing up.
-            </p>
-        </div>
-    </section>
-
-    <!-- How it works (3 step modular) -->
-    <section class="steps">
-        <div class="steps-header reveal">
-            <div class="about-eyebrow">How it works</div>
-            <h2 class="section-title small">Three quiet steps.</h2>
-        </div>
-        <div class="steps-grid">
-            <article class="step reveal">
-                <div class="step-number">01</div>
-                <h3 class="step-title">Discover</h3>
-                <p class="step-text">Find the rooms tied to the venues you already go to.</p>
-            </article>
-            <article class="step reveal">
-                <div class="step-number">02</div>
-                <h3 class="step-title">Connect</h3>
-                <p class="step-text">Meet the regulars. Share what's on tonight. Build context, not contact lists.</p>
-            </article>
-            <article class="step reveal">
-                <div class="step-number">03</div>
-                <h3 class="step-title">Belong</h3>
-                <p class="step-text">Turn a place you visit into a community you're part of.</p>
-            </article>
-        </div>
-    </section>
-
-    <!-- Single community image -->
-    <section class="feature-image reveal">
-        <figure class="feature-image-frame">
-            <img src="public/community-image-1.jpeg" alt="Friends together at a venue" loading="lazy">
-            <figcaption class="feature-image-caption">Real venues. Real people. No filters.</figcaption>
+        <figure class="hero-media reveal">
+            <img src="public/image-1.jpg" alt="People connecting at a venue" loading="eager">
+            <span class="hero-badge">Coming soon ✦</span>
         </figure>
     </section>
 
-    <!-- Waitlist -->
-    <section id="waitlist" class="waitlist reveal">
-        <div class="waitlist-inner">
-            <h2 class="waitlist-title">Be early.</h2>
-            <p class="section-text center">We're opening the first rooms soon. Drop your email to be among the first in.</p>
-            <form class="cta-form center" data-source="waitlist" novalidate>
-                <input type="email" placeholder="your@email.com" class="email-input" required>
-                <button type="submit" class="join-btn">Join the waitlist</button>
-            </form>
+    <!-- ===================== Horizontal-scroll rooms ===================== -->
+    <section id="how" class="hscroll theme-red" data-hscroll aria-label="How it works">
+        <div class="hscroll-pin">
+            <div class="hscroll-track" data-htrack>
+                <div class="hpanel hpanel-intro">
+                    <p class="eyebrow">How it works</p>
+                    <h2 class="hpanel-heading">Three quiet steps.</h2>
+                    <p class="hpanel-lead">Keep scrolling →</p>
+                </div>
+                <article class="hpanel">
+                    <div class="room-card room-1">
+                        <div class="room-media"><img src="public/image-2.jpg" alt="Discover the rooms near you" loading="lazy"></div>
+                        <div class="room-body">
+                            <span class="room-tag">01 · Discover</span>
+                            <h3 class="room-title">Find your rooms</h3>
+                            <p class="room-text">The rooms tied to the venues you already go to — your café, gym, coworking space, local bar.</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="hpanel">
+                    <div class="room-card room-2">
+                        <div class="room-media"><img src="public/image-3.jpg" alt="See who's in the room" loading="lazy"></div>
+                        <div class="room-body">
+                            <span class="room-tag">02 · Connect</span>
+                            <h3 class="room-title">See who's there</h3>
+                            <p class="room-text">See who's in the room right now and start a real conversation — networking that begins in person.</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="hpanel">
+                    <div class="room-card room-3">
+                        <div class="room-media"><img src="public/image-4.jpg" alt="Become part of the community" loading="lazy"></div>
+                        <div class="room-body">
+                            <span class="room-tag">03 · Belong</span>
+                            <h3 class="room-title">Become a regular</h3>
+                            <p class="room-text">Turn the places you visit into a network and a community you're actually part of.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ===================== Why sllyd ===================== -->
+    <section id="why" class="why">
+        <div class="section-head center reveal">
+            <p class="eyebrow">Why sllyd</p>
+            <h2 class="section-title">Built around being there.</h2>
+        </div>
+        <div class="why-grid">
+            <article class="why-col reveal">
+                <span class="why-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 21c5-4.5 7-7.5 7-11a7 7 0 1 0-14 0c0 3.5 2 6.5 7 11z"/></svg>
+                </span>
+                <h3 class="why-title">Real presence</h3>
+                <p class="why-text">You only see the people actually at the same venue as you, right now.</p>
+            </article>
+            <article class="why-col reveal">
+                <span class="why-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8h10M7 12h6"/><path d="M21 12a8 8 0 0 1-8 8H5l-2 2V6a4 4 0 0 1 4-4h6a8 8 0 0 1 8 8z"/></svg>
+                </span>
+                <h3 class="why-title">Starts in person</h3>
+                <p class="why-text">Connections begin face-to-face, not in a backlog of DMs you never answer.</p>
+            </article>
+            <article class="why-col reveal">
+                <span class="why-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>
+                </span>
+                <h3 class="why-title">Place-based</h3>
+                <p class="why-text">Everything starts from the venue you're standing in — your third place.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- ===================== Membership / be early ===================== -->
+    <section id="community" class="member">
+        <figure class="member-media reveal">
+            <img src="public/image-5.jpg" alt="A room full of regulars" loading="lazy">
+        </figure>
+        <div class="member-body reveal">
+            <p class="eyebrow">Be part of the room</p>
+            <h2 class="section-title">Get in early.</h2>
+            <ul class="member-list">
+                <li><span class="check">✦</span> First into the opening rooms</li>
+                <li><span class="check">✦</span> One email when we open — no spam</li>
+                <li><span class="check">✦</span> Early access to the venues near you</li>
+            </ul>
+            <a href="#waitlist" class="btn btn-primary btn-lg">Join the waitlist</a>
+        </div>
+    </section>
+
+    <!-- ===================== What sllyd is (for people / for venues) ===================== -->
+    <section class="value theme-red">
+        <div class="section-head center reveal">
+            <p class="eyebrow">What sllyd is</p>
+            <h2 class="section-title">Connection that starts in the room.</h2>
+        </div>
+        <div class="value-grid">
+            <article class="value-card reveal">
+                <h3 class="value-title">For people</h3>
+                <p class="value-text">Walk into a venue and see who's open to connecting. Start real conversations and build a network out of the people already around you.</p>
+            </article>
+            <article class="value-card reveal">
+                <h3 class="value-title">For venues</h3>
+                <p class="value-text">Turn your regulars into a living community — people who keep coming back because they know they'll find their crowd.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- ===================== Waitlist ===================== -->
+    <section id="waitlist" class="waitlist reveal">
+        <div class="waitlist-inner">
+            <h2 class="waitlist-title">Be early.</h2>
+            <p class="waitlist-sub">We're opening the first rooms soon. Drop your email to be first in.</p>
+            <form class="cta-form" data-source="waitlist" novalidate>
+                <input type="email" placeholder="your@email.com" class="email-input" required>
+                <button type="submit" class="btn btn-primary btn-lg join-btn">Join the waitlist</button>
+            </form>
+            <p class="waitlist-fine">No spam. One email when we open the doors.</p>
+        </div>
+    </section>
+
+    <!-- ===================== Footer ===================== -->
     <footer class="footer">
-        <div class="footer-inner">
-            <a href="#home" class="logo footer-mark" aria-label="sllyd home">
-                <img src="public/logo.png" alt="sllyd" class="logo-image">
-            </a>
-            <div class="footer-meta">© <span id="year"></span> sllyd. Coming soon.</div>
+        <div class="footer-top">
+            <span class="footer-word"><img class="footer-logo-img" src="public/logo-full.png" alt="sllyd"></span>
+            <nav class="footer-cols" aria-label="Footer">
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <a href="#how">How it works</a>
+                    <a href="#why">Why sllyd</a>
+                    <a href="#community">Community</a>
+                </div>
+                <div class="footer-col">
+                    <h4>sllyd</h4>
+                    <a href="#waitlist">Join waitlist</a>
+                    <a href="#home">Our story</a>
+                    <a href="#why">For venues</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Social</h4>
+                    <a href="https://www.instagram.com/sllyd.in/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                </div>
+            </nav>
+        </div>
+        <div class="footer-bottom">
+            <span class="footer-meta">© <span id="year"></span> sllyd. Coming soon.</span>
+            <span class="footer-meta">For the places you love.</span>
         </div>
     </footer>
 
